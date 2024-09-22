@@ -34,4 +34,4 @@ jobs:
           -H "Accept: application/json" \
           -H "Content-Type: application/json" \
           -d '{"serviceId": "srv-cro54aqj1k6c739eoed0", "branch": "main"}' \
-          https://api.render.com/v1/services/YOUR_RENDER_SERVICE_ID/deploys
+          https://api.render.com/v1/services/srv-cro54aqj1k6c739eoed0/deploys
