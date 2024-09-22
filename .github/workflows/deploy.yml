@@ -1,12 +1,9 @@
 name: Deploy Streamlit App to GitHub Pages
 
-# Controls when the action will run
 on:
   push:
     branches:
-      - main  # Trigger the workflow on push to the `main` branch
-
-# Allows you to run this workflow manually from the Actions tab
+      - main  # Only deploy when changes are pushed to the main branch
   workflow_dispatch:
 
 jobs:
@@ -14,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the latest version of the code
+    # Step 1: Check out the repository
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Step 2: Set up Python environment
+    # Step 2: Set up Python
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -28,11 +25,21 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requierments.txt  # Install from your requirements.txt
+        pip install -r requierments.txt
 
-    # Step 4: Deploy the Streamlit app to GitHub Pages
+    # Step 4: Build the Streamlit app
+    # Streamlit apps are dynamic and don't need a build step, so you can skip this part
+    # However, you might want to ensure all files are ready for deployment (e.g., static files)
+
+    # Step 5: Deploy to GitHub Pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./  # The directory where the Streamlit app exists
+        publish_branch: gh-pages  # Use gh-pages as the deployment branch
+        publish_dir: ./  # This is the directory with the content to be deployed
+
+    # Optional: Clean-up
+    - name: Cleanup
+      run: |
+        rm -rf __pycache__
