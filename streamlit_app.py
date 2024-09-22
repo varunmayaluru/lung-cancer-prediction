@@ -1,4 +1,3 @@
-# streamlit_app.py
 import streamlit as st
 import numpy as np
 import joblib
@@ -11,21 +10,21 @@ scaler = joblib.load('app/artifacts/scaler.pkl')
 
 # Function to get user inputs from the Streamlit interface
 def get_user_input():
-    gender = st.selectbox('Gender', ['Male', 'Female'])
+    gender = st.selectbox('Gender', ['Male', 'Female'], index=0)  # Default is 'Male'
     age = st.slider('Age', 20, 100, 60)
-    smoking = st.selectbox('Smoking', ['Yes', 'No'])
-    yellow_fingers = st.selectbox('Yellow Fingers', ['Yes', 'No'])
-    anxiety = st.selectbox('Anxiety', ['Yes', 'No'])
-    peer_pressure = st.selectbox('Peer Pressure', ['Yes', 'No'])
-    chronic_disease = st.selectbox('Chronic Disease', ['Yes', 'No'])
-    fatigue = st.selectbox('Fatigue', ['Yes', 'No'])
-    allergy = st.selectbox('Allergy', ['Yes', 'No'])
-    wheezing = st.selectbox('Wheezing', ['Yes', 'No'])
-    alcohol_consuming = st.selectbox('Alcohol Consuming', ['Yes', 'No'])
-    coughing = st.selectbox('Coughing', ['Yes', 'No'])
-    shortness_of_breath = st.selectbox('Shortness of Breath', ['Yes', 'No'])
-    swallowing_difficulty = st.selectbox('Swallowing Difficulty', ['Yes', 'No'])
-    chest_pain = st.selectbox('Chest Pain', ['Yes', 'No'])
+    smoking = st.selectbox('Smoking', ['Yes', 'No'], index=1)  # Default is 'No'
+    yellow_fingers = st.selectbox('Yellow Fingers', ['Yes', 'No'], index=1)  # Default is 'No'
+    anxiety = st.selectbox('Anxiety', ['Yes', 'No'], index=1)  # Default is 'No'
+    peer_pressure = st.selectbox('Peer Pressure', ['Yes', 'No'], index=1)  # Default is 'No'
+    chronic_disease = st.selectbox('Chronic Disease', ['Yes', 'No'], index=1)  # Default is 'No'
+    fatigue = st.selectbox('Fatigue', ['Yes', 'No'], index=1)  # Default is 'No'
+    allergy = st.selectbox('Allergy', ['Yes', 'No'], index=1)  # Default is 'No'
+    wheezing = st.selectbox('Wheezing', ['Yes', 'No'], index=1)  # Default is 'No'
+    alcohol_consuming = st.selectbox('Alcohol Consuming', ['Yes', 'No'], index=1)  # Default is 'No'
+    coughing = st.selectbox('Coughing', ['Yes', 'No'], index=1)  # Default is 'No'
+    shortness_of_breath = st.selectbox('Shortness of Breath', ['Yes', 'No'], index=1)  # Default is 'No'
+    swallowing_difficulty = st.selectbox('Swallowing Difficulty', ['Yes', 'No'], index=1)  # Default is 'No'
+    chest_pain = st.selectbox('Chest Pain', ['Yes', 'No'], index=1)  # Default is 'No'
 
     # Map user-friendly input back to the original values (0 or 1)
     gender_mapping = {'Male': 1, 'Female': 0}
